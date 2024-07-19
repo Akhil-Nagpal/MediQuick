@@ -21,7 +21,7 @@ function Header() {
     <>
       <header className="hidden bg-[#EAFFE1] relative sm:flex justify-between z-50">
         <Link className="flex gap-2 items-center m-4" to={"/"}>
-          <img src="/Logo.svg" alt="MediQuick-Logo" />
+          <img src="/assests/Logo.svg" alt="MediQuick-Logo" />
           <h1 className="text-2xl font-bold kanit-bold text-primary">
             MediQuick
           </h1>
@@ -68,11 +68,14 @@ function Header() {
 
       {/* Mobile */}
 
-      <header className="sm:hidden bg-[#EAFFE1] p-4 flex justify-between items-center w-screen overflow-x-hidden">
+      <header
+        className="sm:hidden bg-[#EAFFE1] p-4 flex justify-between items-center 
+      max-w-screen overflow-x-hidden"
+      >
         <Link to={"/"} className="flex gap-1 items-center">
           <img
             className="w-8 h-8 "
-            src="/public/Logo.svg"
+            src="/assests/Logo.svg"
             alt="MediQuick-Logo"
           />
           <h1 className="text-lg font-bold kanit-bold text-primary">
@@ -85,9 +88,9 @@ function Header() {
             className="bg-primary p-1 rounded-lg flex justify-center"
           >
             {isOpen ? (
-              <img className="w-7" src="/public/cross.svg" alt="" />
+              <img className="w-7" src="/assests/cross.svg" alt="" />
             ) : (
-              <img className="w-7" src="/public/menu.svg" alt="" />
+              <img className="w-7" src="/assests/menu.svg" alt="" />
             )}
           </button>
 
