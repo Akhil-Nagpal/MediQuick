@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Cross from "../assets/cross.svg";
+import Menu from "../assets/menu.svg";
+import Logo from "../assets/Logo.svg";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +23,11 @@ function Header() {
   return (
     <>
       <header className="hidden bg-[#EAFFE1] relative sm:flex justify-between z-50">
-        <Link className="flex gap-2 items-center m-4" to={"/"}>
-          <img src="/assests/Logo.svg" alt="MediQuick-Logo" />
+        <Link
+          className="hidden sm:flex gap-2 items-center m-4"
+          to={"/"}
+        >
+          <img src={Logo} alt="" />
           <h1 className="text-2xl font-bold kanit-bold text-primary">
             MediQuick
           </h1>
@@ -70,14 +76,10 @@ function Header() {
 
       <header
         className="sm:hidden bg-[#EAFFE1] p-4 flex justify-between items-center 
-      max-w-screen overflow-x-hidden"
+        max-w-screen overflow-x-hidden"
       >
-        <Link to={"/"} className="flex gap-1 items-center">
-          <img
-            className="w-8 h-8 "
-            src="/assests/Logo.svg"
-            alt="MediQuick-Logo"
-          />
+        <Link to={"/"} className="sm:hidden flex gap-1 items-center">
+          <img className="w-8 h-8 " src={Logo} alt="" />
           <h1 className="text-lg font-bold kanit-bold text-primary">
             MediQuick
           </h1>
@@ -88,9 +90,9 @@ function Header() {
             className="bg-primary p-1 rounded-lg flex justify-center"
           >
             {isOpen ? (
-              <img className="w-7" src="/assests/cross.svg" alt="" />
+              <img className="w-7" src={Cross} alt="" />
             ) : (
-              <img className="w-7" src="/assests/menu.svg" alt="" />
+              <img className="w-7" src={Menu} alt="" />
             )}
           </button>
 
