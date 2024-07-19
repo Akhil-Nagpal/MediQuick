@@ -75,8 +75,8 @@ function Header() {
       {/* Mobile */}
 
       <header
-        className="sm:hidden bg-[#EAFFE1] p-4 flex justify-between items-center 
-        max-w-screen overflow-x-hidden"
+        className="sm:hidden bg-[#EAFFE1] p-4 h-[68px] flex justify-between items-center relative 
+        overflow-hidden shadow-sm z-10"
       >
         <Link to={"/"} className="sm:hidden flex gap-1 items-center">
           <img className="w-8 h-8 " src={Logo} alt="" />
@@ -84,46 +84,46 @@ function Header() {
             MediQuick
           </h1>
         </Link>
-        <div>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="bg-primary p-1 rounded-lg flex justify-center"
-          >
-            {isOpen ? (
-              <img className="w-7" src={Cross} alt="" />
-            ) : (
-              <img className="w-7" src={Menu} alt="" />
-            )}
-          </button>
+        {/* Masing Overlay */}
+        <div
+          className={`bg-black/10 fixed inset-0 ${
+            isOpen ? "block" : "hidden"
+          }`}
+          onClick={() => setIsOpen(false)}
+        ></div>
+        {/* Toogle Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-primary p-1 rounded-lg flex justify-center"
+        >
+          {isOpen ? (
+            <img className="w-7" src={Cross} alt="" />
+          ) : (
+            <img className="w-7" src={Menu} alt="" />
+          )}
+        </button>
+        {/* NavLinks */}
 
-          <div
-            className={`bg-black/10 fixed inset-0 ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => setIsOpen(false)}
-          ></div>
-
-          <nav
-            className={` ${
-              isOpen ? "translate-x-0" : "translate-x-full"
-            } flex flex-col gap-3 justify-start items-center absolute right-0
-           bg-gray-800 px-6 py-10 mt-4 text-white h-screen transition-all duration-300`}
-          >
-            {navLinks?.map((item) => {
-              return (
-                <div key={item?.id}>
-                  <NavLink
-                    onClick={handleNavbar}
-                    className="inter text-sm hover:bg-secondary w-10"
-                    to={item?.slug}
-                  >
-                    {item?.label}
-                  </NavLink>
-                </div>
-              );
-            })}
-          </nav>
-        </div>
+        <nav
+          className={` ${
+            isOpen ? "" : "translate-x-full"
+          } fixed right-0 top-[68px] flex flex-col items-center gap-4 bg-gray-700 px-6 py-10
+         text-white h-[calc(100vh-68px)] transition-all duration-300`}
+        >
+          {navLinks?.map((item) => {
+            return (
+              <div key={item?.id}>
+                <NavLink
+                  onClick={handleNavbar}
+                  className="inter text-sm hover:bg-secondary w-10"
+                  to={item?.slug}
+                >
+                  {item?.label}
+                </NavLink>
+              </div>
+            );
+          })}
+        </nav>
       </header>
     </>
   );
