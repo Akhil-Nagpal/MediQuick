@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <>
-      <header className="hidden bg-[#EAFFE1] relative sm:flex justify-between z-50">
+      <header className="hidden bg-[#EAFFE1] relative sm:flex justify-between z-50 px-12">
         <Link
           className="hidden sm:flex gap-2 items-center m-4"
           to={"/"}
@@ -75,7 +75,7 @@ function Header() {
       {/* Mobile */}
 
       <header
-        className="sm:hidden bg-[#EAFFE1] p-4 h-[68px] flex justify-between items-center relative 
+        className="sm:hidden bg-[#EAFFE1] p-6 h-[68px] flex justify-between items-center relative 
         overflow-hidden shadow-sm z-10"
       >
         <Link to={"/"} className="sm:hidden flex gap-1 items-center">
@@ -107,7 +107,7 @@ function Header() {
         <nav
           className={` ${
             isOpen ? "" : "translate-x-full"
-          } fixed right-0 top-[68px] flex flex-col items-center gap-4 bg-gray-700 px-6 py-10
+          } fixed right-0 top-[68px] flex flex-col items-center gap-4 bg-gray-700 py-12 w-2/4
          text-white h-[calc(100vh-68px)] transition-all duration-300`}
         >
           {navLinks?.map((item) => {
@@ -115,7 +115,7 @@ function Header() {
               <div key={item?.id}>
                 <NavLink
                   onClick={handleNavbar}
-                  className="inter text-sm hover:bg-secondary w-10"
+                  className="nunito text-lg hover:bg-secondary "
                   to={item?.slug}
                 >
                   {item?.label}
