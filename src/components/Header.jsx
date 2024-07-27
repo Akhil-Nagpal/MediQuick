@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Cross from "../assets/cross.svg";
 import Menu from "../assets/menu.svg";
 import Logo from "../assets/Logo.svg";
@@ -8,7 +8,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { id: 1, label: "Home", slug: "" },
+    { id: 1, label: "Home", slug: "/" },
     { id: 2, label: "Shop", slug: "/shop" },
     { id: 3, label: "About Us", slug: "/about" },
     { id: 4, label: "Contact Us", slug: "/contact" },
@@ -19,6 +19,8 @@ function Header() {
       setIsOpen(false);
     }, 100);
   };
+
+  const location = useLocation();
 
   return (
     <>
@@ -39,8 +41,12 @@ function Header() {
               <nav key={item?.id} className="inter text-md">
                 <NavLink
                   to={item?.slug}
-                  className="hover:bg-secondary hover:text-white px-4 py-3 rounded-lg transition-all 
-                    duration-150"
+                  className={`${
+                    item?.slug === location.pathname
+                      ? "bg-secondary text-white"
+                      : null
+                  } hover:bg-secondary hover:text-white px-4 py-3 rounded-lg transition-all 
+                    duration-150`}
                 >
                   {item?.label}
                 </NavLink>
@@ -54,7 +60,7 @@ function Header() {
           <button
             type="button"
             className="text-white bg-primary hover:bg-secondary transition-all duration-150
-             active:bg-green-600 font-medium rounded-lg text-sm 
+             active:bg-primary font-medium rounded-lg text-sm 
               active:outline-none px-4 py-3"
           >
             Log-In
@@ -64,7 +70,7 @@ function Header() {
             type="button"
             className=" text-sm font-medium 
             text-primary rounded-lg border border-secondary
-            hover:bg-[#EAFFE1] hover:text-primary transition-all duration-150
+            hover:bg-[#ccffb7] hover:text-primary transition-all duration-150
             active:bg-[#E0FFD2] px-4 py-2.5"
           >
             Sign Up
@@ -107,7 +113,7 @@ function Header() {
         <nav
           className={` ${
             isOpen ? "" : "translate-x-full"
-          } fixed right-0 top-[68px] flex flex-col items-center gap-4 bg-gray-700 py-12 w-2/4
+          } fixed right-0 top-[68px] flex flex-col items-center gap-4 bg-gray-700 py-12 min-w-[180px]
          text-white h-[calc(100vh-68px)] transition-all duration-300`}
         >
           {navLinks?.map((item) => {
@@ -115,7 +121,11 @@ function Header() {
               <div key={item?.id}>
                 <NavLink
                   onClick={handleNavbar}
-                  className="nunito text-lg hover:bg-secondary "
+                  className={`nunito text-lg hover:text-secondary ${
+                    item?.slug === location.pathname
+                      ? "text-secondary"
+                      : null
+                  }`}
                   to={item?.slug}
                 >
                   {item?.label}
